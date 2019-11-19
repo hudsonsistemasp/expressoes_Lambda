@@ -1,6 +1,6 @@
 package entities;
 
-public class Employee implements Comparable<Employee>{
+public class Employee{
 	private String name;
 	private String email;
 	private double salary;
@@ -32,10 +32,6 @@ public class Employee implements Comparable<Employee>{
 		return salary;
 	}
 
-	@Override
-	public int compareTo(Employee o) {
-		return name.toUpperCase().compareTo(o.getName().toUpperCase());
-	}
 	@Override
 	public String toString() {
 		return name + ", " + email + ", " + "R$ " + salary;

@@ -3,9 +3,10 @@ package application;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import entities.Employee;
 
@@ -15,8 +16,7 @@ public class Program {
 		String path = "C:\\Users\\Hudson\\Documents\\CURSOS ON LINE PROGRAMACAO\\Curso Java Completo 2019 OO e Projetos\\Employees.txt";
 		try(BufferedReader br = new BufferedReader(new FileReader(path))){
 			Scanner sc = new Scanner(System.in);
-			/*System.out.println("Informe, à partir o valor, o salário que deseja filtrar: ");
-			Double salaryUser = sc.nextDouble();*/
+			
 			
 			List<Employee> listEmployee = new ArrayList<>();
 			String line = br.readLine();
@@ -25,9 +25,23 @@ public class Program {
 				listEmployee.add(new Employee(content[0], content[1],Double.parseDouble(content[2])));
 				line = br.readLine();
 			}
-			
-			Collections.sort(listEmployee);
+			System.out.println("Lista dos funcionários:");
 			listEmployee.forEach(System.out::println);
+			
+			/*1° Requisito: Mostrar, em ordem alfabética, o email dos
+			funcionários cujo salário seja superior a um dado valor
+			fornecido pelo usuário.*/
+			System.out.println("Informe, à partir o valor, o salário que deseja filtrar: ");
+			Double salaryUser = sc.nextDouble();
+			
+			//Criar uma stream para implementar esses requisitos
+			
+			//1° maneira criando o Comparator
+			Predicate<Employee> predEmp = x -> x.getSalary() > salaryUser;
+			List<String> listEmail = listEmployee.stream().filter(predEmp).map(x -> x.getEmail()).sorted().collect(Collectors.toList());
+			
+			System.out.println("Lista com os filtros: ");
+			listEmail.forEach(System.out::println);
 			
 			sc.close();
 			
