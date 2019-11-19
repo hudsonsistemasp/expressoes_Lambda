@@ -39,7 +39,8 @@ public class Program {
 			//1° maneira criando o Comparator
 			Predicate<Employee> predEmp = x -> x.getSalary() > salaryUser;
 			List<String> listEmail = listEmployee.stream()
-										.filter(predEmp).map(x -> x.getEmail())
+										.filter(predEmp)
+										.map(x -> x.getEmail())
 										.sorted()
 										.collect(Collectors.toList());
 			
@@ -54,7 +55,7 @@ public class Program {
 										 .map(x -> x.getSalary())
 										 .reduce(0.0, (x,y) -> x + y);
 			
-			System.out.println("Soma de todos salários com inicias em letra M: " + "$ " + sumSalaryEmployees);
+			System.out.println("Soma de todos salários com inicias em letra M: " + "$ " + String.format("%.2f",sumSalaryEmployees));
 			
 			sc.close();
 			
