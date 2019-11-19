@@ -1,0 +1,9 @@
+Marcos,email1@email.com.br,400.00
+Tela,email2@email.com.br,300.00
+Josleia,email3@email.com.br,1400.00
+Mireia,email4@email.com.br,2200.00
+Fireia,email5@email.com.br,445.00
+Ureia,email6@email.com.br,3450.00
+Diris,email7@email.com.br,8960.00
+Furnuncio,email8@email.com.br,479000.00
+Huduncio,emailHs@gmail.com,40989.00
