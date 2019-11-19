@@ -38,10 +38,23 @@ public class Program {
 			
 			//1° maneira criando o Comparator
 			Predicate<Employee> predEmp = x -> x.getSalary() > salaryUser;
-			List<String> listEmail = listEmployee.stream().filter(predEmp).map(x -> x.getEmail()).sorted().collect(Collectors.toList());
+			List<String> listEmail = listEmployee.stream()
+										.filter(predEmp).map(x -> x.getEmail())
+										.sorted()
+										.collect(Collectors.toList());
 			
 			System.out.println("Lista com os filtros: ");
 			listEmail.forEach(System.out::println);
+			
+			
+			/*2° requisito: Mostrar a soma dos salários dos funcionários cujo
+			nome começa com a letra 'M'.*/
+			Double sumSalaryEmployees = listEmployee.stream()
+										.filter(x -> x.getName().toUpperCase().charAt(0) == 'M')
+										 .map(x -> x.getSalary())
+										 .reduce(0.0, (x,y) -> x + y);
+			
+			System.out.println("Soma de todos salários com inicias em letra M: " + "$ " + sumSalaryEmployees);
 			
 			sc.close();
 			
